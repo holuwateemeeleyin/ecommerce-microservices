@@ -1,0 +1,39 @@
+services:
+  gateway:
+    image: api-gateway:dev
+    build:
+      context: ./gateway
+      target: builder
+    command: ["node", "--watch", "server.js"]
+    volumes:
+      - ./gateway:/app
+    ports:
+      - "9229:9229"
+    environment:
+      NODE_OPTIONS: --inspect=0.0.0.0:9229
+
+  product-service:
+    image: product-service:dev
+    build:
+      context: ./product-service
+      target: builder
+    command: ["node", "--watch", "server.js"]
+    volumes:
+      - ./product-service:/app
+    ports:
+      - "9230:9230"
+    environment:
+      NODE_OPTIONS: --inspect=0.0.0.0:9230
+
+  order-service:
+    image: order-service:dev
+    build:
+      context: ./order-service
+      target: builder
+    command: ["node", "--watch", "server.js"]
+    volumes:
+      - ./order-service:/app
+    ports:
+      - "9231:9231"
+    environment:
+      NODE_OPTIONS: --inspect=0.0.0.0:9231

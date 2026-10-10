@@ -1,0 +1,9 @@
+{
+  "name": "order-service",
+  "version": "1.0.0",
+  "description": "Order service for the e-commerce application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
